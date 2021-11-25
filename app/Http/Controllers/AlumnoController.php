@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alumno;
 use App\Models\Maestro;
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class AlumnoController
@@ -29,7 +30,12 @@ class AlumnoController extends Controller
     {
         $alumnos = Alumno::paginate();
         
-        return view('alumno.pdf', compact('alumnos'));
+        $pdf = PDF::loadView('alumno.pdf', ['alumnos'=>$alumnos]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        //return $pdf->stream();
+        return $pdf->download('___alumnos.pdf');
+
+        //return view('alumno.pdf', compact('alumnos'));
     
     }
 

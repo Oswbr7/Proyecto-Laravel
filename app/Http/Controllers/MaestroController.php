@@ -6,6 +6,7 @@ use App\Models\Maestro;
 use App\Models\Clase;
 
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class MaestroController
@@ -30,7 +31,12 @@ class MaestroController extends Controller
     {
         $maestros = Maestro::paginate();
         
-        return view('maestro.pdf', compact('maestros'));
+        $pdf = PDF::loadView('maestro.pdf', ['maestros'=>$maestros]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        //return $pdf->stream();
+        return $pdf->download('___maestros.pdf');
+
+        //return view('maestro.pdf', compact('maestros'));
     
     }
 

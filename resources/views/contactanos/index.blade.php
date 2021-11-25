@@ -13,6 +13,7 @@
                 
                     <label for="">
                         Nombre:
+                        <br>
                         <input type = "text" name = "name">
                     </label>
                     <br>
@@ -23,6 +24,7 @@
 
                     <label for="">
                         Correo:
+                        <br>
                         <input type = "text" name = "correo">
                     </label>
                     <br>
@@ -42,9 +44,10 @@
                         <p><strong> {{ $message }}</strong></p>
                     @enderror
 
-                    <button type = "submit">Enviar Mensaje</button>
+                    <button type = "submit" class="btn btn-primary btn-sm" >Enviar Mensaje</button>
 
                 </form>
+                <br>
 
                 @if (session('info'))
                     <script>
